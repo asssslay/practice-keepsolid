@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Choose the Country</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="question">Which country is currently defending its independence?</div>
+
+    <div class="country-grid">
+        <div class="country-item" onclick="checkAnswer('Poland')">Poland</div>
+        <div class="country-item" onclick="checkAnswer('Ukraine')">Ukraine</div>
+        <div class="country-item" onclick="checkAnswer('Romania')">Romania</div>
+        <div class="country-item" onclick="checkAnswer('Moldova')">Moldova</div>
+        <div class="country-item" onclick="checkAnswer('Slovakia')">Slovakia</div>
+    </div>
+
+    <div id="popup" class="popup"></div>
+
+    <script>
+        function checkAnswer(country) {
+            const popup = document.getElementById('popup');
+
+            if (country === 'Ukraine') {
+                popup.textContent = 'Correct! Ukraine is fighting for its independence!';
+            } else {
+                popup.textContent = 'Incorrect. Try again!';
+            }
+
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="memory-container">
+        <h1 class="title">Memory Game</h1>
+        <div class="memory-grid">
+            <div class="memory-card" onclick="flipCard(this)">🇺🇦</div>
+            <div class="memory-card" onclick="flipCard(this)">🌻</div>
+            <div class="memory-card" onclick="flipCard(this)">🇺🇦</div>
+            <div class="memory-card" onclick="flipCard(this)">🎵</div>
+            <div class="memory-card" onclick="flipCard(this)">🌻</div>
+            <div class="memory-card" onclick="flipCard(this)">📚</div>
+            <div class="memory-card" onclick="flipCard(this)">🎵</div>
+            <div class="memory-card" onclick="flipCard(this)">📚</div>
+        </div>
+    </div>
+
+    <script>
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+        function flipCard(card) {
+            if (flippedCards.length === 2 || card.classList.contains('flipped')) return;
+
+            card.classList.add('flipped');
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                setTimeout(checkMatch, 1000);
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            const match = card1.textContent === card2.textContent;
+
+            if (!match) {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+            } else {
+                matchedPairs++;
+                if (matchedPairs === 4) {
+                    alert('Congratulations! You won! 🎉');
+                }
+            }
+
+            flippedCards = [];
+        }
+    </script>
+</body>
+
+</html>
